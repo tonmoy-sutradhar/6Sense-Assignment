@@ -18,8 +18,8 @@ function Assignment() {
     setFormEntire([...formEntire, { name: "", country: "" }]);
   };
 
-  const handleDelete = (index) => {
-    const deleteForm = formEntire.filter((_, i) => i !== index);
+  const handleDelete = (form) => {
+    const deleteForm = formEntire.filter((_, i) => i !== form);
     setFormEntire(deleteForm);
   };
 
@@ -42,25 +42,8 @@ function Assignment() {
     SetSubmitData(formEntire);
     toast.success("Submit Successfully!");
 
+    // setFormEntire([{ name: "", country: "" }]);
     setError({ input: false, select: false });
-    // const form = new FormData(e.target);
-    // const name = form.get("name");
-    // const country = form.get("country");
-
-    // const checkError = {
-    //   input: !name.trim(),
-    //   select: !country.trim(),
-    // };
-
-    // setError(checkError);
-
-    // if (checkError.input || checkError.select) return;
-    // toast.success("submit successfully");
-
-    // setFormData({ name, country });
-
-    // console.log(name);
-    // console.log(country);
   };
 
   return (
