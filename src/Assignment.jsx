@@ -9,9 +9,9 @@ function Assignment() {
 
   const handleChange = (index, e) => {
     const { name, value } = e.target;
-    const newFormEntire = [...formField];
-    newFormEntire[index][name] = value;
-    setFormField(newFormEntire);
+    const newFormField = [...formField];
+    newFormField[index][name] = value;
+    setFormField(newFormField);
   };
 
   const handleAdd = () => {
@@ -47,8 +47,8 @@ function Assignment() {
   };
 
   return (
-    <div className="w-7xl min-h-[calc(100vh-301px)] m-4 mx-auto p-4 border-2  border-blue-400 rounded-xl">
-      <h1 className="text-4xl font-bold text-center underline">
+    <div className="w-[1400px] min-h-[calc(100vh-200px)] m-4 mx-auto p-4 border-2  border-blue-400 rounded-xl">
+      <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center underline">
         Frontend Developer Challenge{" "}
       </h1>
 
@@ -56,7 +56,10 @@ function Assignment() {
       <form onSubmit={handleSubmit} className="py-4 ">
         <h1 className="text-2xl font-bold pb-2">User Information :</h1>
         {formField.map((data, index) => (
-          <div key={index} className="flex gap-3 items-start pt-3">
+          <div
+            key={index}
+            className="flex flex-col  sm:flex-row gap-3 items-start pt-3"
+          >
             {/* Input field */}
             <div className="flex flex-col">
               <input
@@ -96,7 +99,7 @@ function Assignment() {
             <button
               type="button"
               onClick={() => handleDelete(index)}
-              className="text-red-500 mt-2.5 ml-6 font-bold px-3 cursor-pointer border border-red-500 rounded-full"
+              className="text-red-500   mt-2.5 sm:ml-6 font-bold px-3 cursor-pointer border border-red-500 rounded-full"
             >
               Delete
             </button>
@@ -146,7 +149,7 @@ function Assignment() {
       </div>
 
       {/* ---------------------------------------Form data with Table formate---------------------------------------- */}
-      <div className="mt-5">
+      <div className="mt-10">
         <h1 className="text-xl font-bold ">
           Print Form state with Table formate:
         </h1>
