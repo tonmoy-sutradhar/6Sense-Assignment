@@ -144,7 +144,7 @@ function Assignment() {
         </div>
       </form>
 
-      {/* Form data view */}
+      {/* Form data with h3 tag */}
       <div className="mt-10">
         <h1 className="text-xl font-bold ">Print Form state with h3 tags:</h1>
         {submitData.map((data, index) => (
@@ -160,6 +160,38 @@ function Assignment() {
             </h3>
           </div>
         ))}
+      </div>
+
+      {/* Form data with Table formate */}
+      <div className="mt-5">
+        <h1 className="text-xl font-bold ">
+          Print Form state with Table formate:
+        </h1>
+        {/* Table ----> */}
+        <div className="overflow-hidden border-2 border-gray-500 rounded-xl w-full mt-2">
+          <table className="table-auto border-collapse w-full">
+            <thead>
+              <tr className="bg-gray-100 ">
+                <th className="border border-gray-500  px-4 py-2">User Name</th>
+                <th className="border border-gray-500 px-4 py-2">
+                  User Country
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {submitData.map((data, index) => (
+                <tr key={index}>
+                  <td className="border border-gray-500 px-4 py-2">
+                    {data.name}
+                  </td>
+                  <td className="border border-gray-500 px-4 py-2">
+                    {data.country}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
