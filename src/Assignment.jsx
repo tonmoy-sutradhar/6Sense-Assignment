@@ -4,31 +4,32 @@ import { toast } from "react-toastify";
 
 function Assignment() {
   const [error, setError] = useState({ input: false, select: false });
-  const [formEntire, setFormEntire] = useState([{ name: "", country: "" }]);
+  const [formField, setFormField] = useState([{ name: "", country: "" }]);
   const [submitData, SetSubmitData] = useState([]);
 
   const handleChange = (index, e) => {
     const { name, value } = e.target;
-    const newFormEntire = [...formEntire];
+    const newFormEntire = [...formField];
     newFormEntire[index][name] = value;
-    setFormEntire(newFormEntire);
+    setFormField(newFormEntire);
   };
 
   const handleAdd = () => {
-    setFormEntire([...formEntire, { name: "", country: "" }]);
+    setFormField([...formField, { name: "", country: "" }]);
   };
 
   const handleDelete = (form) => {
-    const deleteForm = formEntire.filter((_, i) => i !== form);
-    setFormEntire(deleteForm);
+    const deleteForm = formField.filter((_, i) => i !== form);
+    setFormField(deleteForm);
   };
 
+  // -------------------------------------------Submit form data------------------------------------------------
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const checkError = formEntire.map((entry) => ({
-      input: !entry.name.trim(),
-      select: !entry.country.trim(),
+    const checkError = formField.map((data) => ({
+      input: !data.name.trim(),
+      select: !data.country.trim(),
     }));
 
     const errorOccur = checkError.some((err) => err.input || err.select);
@@ -39,35 +40,34 @@ function Assignment() {
 
     if (errorOccur) return;
 
-    SetSubmitData(formEntire);
+    SetSubmitData(formField);
     toast.success("Submit Successfully!");
 
-    // setFormEntire([{ name: "", country: "" }]);
     setError({ input: false, select: false });
   };
 
   return (
-    <div className="min-h-[calc(100vh-301px)] m-4 p-4 border-2  border-blue-400 rounded-xl">
+    <div className="w-7xl min-h-[calc(100vh-301px)] m-4 mx-auto p-4 border-2  border-blue-400 rounded-xl">
       <h1 className="text-4xl font-bold text-center underline">
         Frontend Developer Challenge{" "}
       </h1>
 
-      {/* Form section */}
+      {/* --------------------------------------Form section-------------------------------------------------------- */}
       <form onSubmit={handleSubmit} className="py-4 ">
         <h1 className="text-2xl font-bold pb-2">User Information :</h1>
-        {formEntire.map((entry, index) => (
+        {formField.map((data, index) => (
           <div key={index} className="flex gap-3 items-start pt-3">
             {/* Input field */}
             <div className="flex flex-col">
               <input
                 type="text"
                 name="name"
-                value={entry.name}
+                value={data.name}
                 onChange={(e) => handleChange(index, e)}
                 placeholder="Enter your name ..."
                 className="border-2 p-2 rounded-xl text-gray-950 w-68"
               />
-              {error?.input && !entry.name && (
+              {error?.input && !data.name && (
                 <span className="text-red-500 text-sm ">Input is required</span>
               )}
             </div>
@@ -75,7 +75,7 @@ function Assignment() {
             <div className="flex flex-col">
               <select
                 name="country"
-                value={entry.country}
+                value={data.country}
                 onChange={(e) => handleChange(index, e)}
                 className="border-2 p-2 w-68 rounded-xl"
               >
@@ -86,7 +86,7 @@ function Assignment() {
                 <option value="France">France</option>
                 <option value="Australia">Australia</option>
               </select>
-              {error?.select && !entry.country && (
+              {error?.select && !data.country && (
                 <span className="text-red-500 text-sm ">
                   Select is required
                 </span>
@@ -127,7 +127,7 @@ function Assignment() {
         </div>
       </form>
 
-      {/* Form data with h3 tag */}
+      {/* ------------------------------------------Form data with h3 tag------------------------------------------- */}
       <div className="mt-10">
         <h1 className="text-xl font-bold ">Print Form state with h3 tags:</h1>
         {submitData.map((data, index) => (
@@ -145,7 +145,7 @@ function Assignment() {
         ))}
       </div>
 
-      {/* Form data with Table formate */}
+      {/* ---------------------------------------Form data with Table formate---------------------------------------- */}
       <div className="mt-5">
         <h1 className="text-xl font-bold ">
           Print Form state with Table formate:

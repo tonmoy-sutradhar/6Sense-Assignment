@@ -2,6 +2,10 @@
 
 # 📝 Dynamic User Info Form with Validation | React.js
 
+## Live Link
+
+- [6 Sense Technology Assignment](https://sixsensetechnologyassignment.netlify.app/)
+
 This project is a dynamic and interactive user information form built with **React.js**. It allows users to enter multiple sets of data using an input field and a select box, with real-time validation and state management.
 
 <p align="center">
