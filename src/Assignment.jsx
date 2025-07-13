@@ -19,7 +19,7 @@ function Assignment() {
   };
 
   const handleDelete = (form) => {
-    const deleteForm = formField.filter((_, i) => i !== form);
+    const deleteForm = formField.filter((_, item) => item !== form);
     setFormField(deleteForm);
   };
 
@@ -99,7 +99,7 @@ function Assignment() {
             <button
               type="button"
               onClick={() => handleDelete(index)}
-              className="text-red-500   mt-2.5 sm:ml-6 font-bold px-3 cursor-pointer border border-red-500 rounded-full"
+              className="text-red-500 mt-2.5 sm:ml-6 font-bold px-3 cursor-pointer border border-red-500 rounded-full"
             >
               Delete
             </button>
